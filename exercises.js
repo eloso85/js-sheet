@@ -303,7 +303,7 @@ function exercise21(str) {
   }
 }
 
-console.log(exercise21("thon"));
+//console.log(exercise21("thon"));
 
 // ─── Exercise 22 ─────────────────────────────────────────────────────────────
 // Remove the character at position `pos` (0-indexed) from the string.
@@ -315,15 +315,24 @@ function exercise22(str, pos) {
 
 }
 
-exercise22("hello", 2)
+//exercise22("hello", 2)
 
 // ─── Exercise 23 ─────────────────────────────────────────────────────────────
 // Swap the first and last characters of a string.
 // The string length must be >= 1.
 
 function exercise23(str) {
-  // TODO
+  let firstLetter = str[0]
+  let lastLetter = str[str.length - 1]
+  let stringMiddle = str.slice(1, -1)
+
+  if (str.length === 1) {
+    return str
+  } else {
+    return lastLetter + stringMiddle + firstLetter
+  }
 }
+//console.log(exercise23("Hello"))
 
 // ─── Exercise 24 ─────────────────────────────────────────────────────────────
 // Return a new string formed by adding the first character of the input
@@ -331,8 +340,10 @@ function exercise23(str) {
 // e.g. "hello" → "hhelloh"
 
 function exercise24(str) {
-  // TODO
+  return str[0] + str + str[0]
 }
+
+console.log(exercise24("Hello"))
 
 
 // ─── Exercise 25 ─────────────────────────────────────────────────────────────
