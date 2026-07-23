@@ -343,45 +343,52 @@ function exercise24(str) {
   return str[0] + str + str[0]
 }
 
-console.log(exercise24("Hello"))
+//console.log(exercise24("Hello"))
 
 
 // ─── Exercise 25 ─────────────────────────────────────────────────────────────
 // Return true if the given positive number is a multiple of 3 or 7.
 
 function exercise25(n) {
-  // TODO
+  return n % 3 === 0 || n % 7 === 0;
 }
+//console.log(exercise25(5))
 
 // ─── Exercise 26 ─────────────────────────────────────────────────────────────
 // Take the last 3 characters of a string and add them to both the front and back.
 // The string length must be >= 3.
 // e.g. "Hello" → "lloHellello"  wait, re-read: last 3 = "llo" → "lloHellollo"
 
-function exercise26(str) {
-  // TODO
-}
 
+function exercise26(str) {
+  if (str.length < 3) throw new Error("String must be longer then 3 characters")
+  const last3 = str.slice(-3)
+  return last3 + str + last3
+}
+//console.log(exercise26("low"))
 // ─── Exercise 27 ─────────────────────────────────────────────────────────────
 // If the string starts with "Java", return it unchanged.
 // Otherwise prepend "Java" to it.
 
 function exercise27(str) {
-  // TODO
+  if (str.startsWith("Java")) return str
+  return "Java" + str
 }
+//console.log(exercise27("Javascript"))
 
 // ─── Exercise 28 ─────────────────────────────────────────────────────────────
 // Return true if either of two integers falls in the range 50..99 (inclusive).
 
 function exercise28(a, b) {
-  // TODO
+  return (a >= 50 && a <= 99) || (b >= 50 && b <= 99)
 }
 
+//console.log(exercise28(50, 20))
 // ─── Exercise 29 ─────────────────────────────────────────────────────────────
 // Return true if one or more of three integers falls in the range 50..99 (inclusive).
 
 function exercise29(a, b, c) {
-  // TODO
+  return (a >= 50 && a <= 99) || (b >= 50 && b <= 99) || (c >= 50 && c <= 99)
 }
 
 // ─── Exercise 30 ─────────────────────────────────────────────────────────────
@@ -390,7 +397,8 @@ function exercise29(a, b, c) {
 // e.g. "JavaScript" → "Java"
 
 function exercise30(str) {
-  // TODO
+  if (str.endsWith("Script")) return str.slice(0, 4)
+  return str
 }
 
 // ─── Exercise 31 ─────────────────────────────────────────────────────────────
