@@ -42,9 +42,23 @@ function exercise3(csvString) {
 // Convert a CSV string into an array of objects, using the first row as the
 // object keys.
 
-function exercise4() {
-    // TODO
+function exercise4(csvString) {
+    const array = csvString.split("\n");
+    const keys = array[0].split(",")
+    const rows = array.slice(1);
+
+    return rows.map(row => {
+        const values = row.split(",")
+        return keys.reduce((obj, key, i) => {
+            obj[key] = values[i];
+            return obj
+        }, {})
+    })
+
+
 }
+//console.log(exercise4("name,age\nAlice,30\nBob,25"))
+
 
 //exercise4()
 
@@ -53,22 +67,39 @@ function exercise4() {
 // Convert an array of objects into a CSV string, including only the given
 // columns.
 
-function exercise5() {
-    // TODO
+function exercise5(arr, keys) {
+    const header = keys.join(",")
+    const rows = arr.map(obj => keys.map(col => obj[col]).join(","));
+
+    return [header, ...rows].join("\n")
+
 }
 
-//exercise5()
+// console.log(
+//     exercise5(
+//         [{ name: "Alice", age: "30" }, { name: "Bob", age: "26" }], ["name", "age"]
+//     ))
 
 // ─── Exercise 6 ───────────────────────────────────────────────────────────
-// Find Value in Nested JSON
+// Find Value in Nested 
 // Given a nested object and a target key, find and return that key's value
 // wherever it appears.
 
-function exercise6() {
-    // TODO
-}
+function exercise6(object, targetKeys) {
 
-//exercise6()
+    for (const key in object) {
+        if (key === targetKeys) {
+            return object[key]
+        }
+        if (typeof object[key] === "object" && object[key] !== null) {
+            return exercise6(object[key], targetKeys)
+        }
+    }
+
+}
+//console.log(exercise6({ a: 1, b: { c: 2 } }, "c"))
+//console.log(exercise6({ a: 1, b: { c: 2, d: { e: 3 } } }, "e"))
+//console.log(exercise6({ a: 1, b: 2, c: 3 }, "c"))
 
 // ─── Exercise 7 ───────────────────────────────────────────────────────────
 // Number to Array of Digits
