@@ -17,7 +17,7 @@ function exercise1(obj1, obj2) {
     }
     return true
 }
-//console.log(exercise1({ name: "Alex", age: 40 }, { name: "Alex", age: 45 }));
+console.log(exercise1({ name: "Alex", age: 40 }, { name: "Alex", age: 40 }));
 
 
 // ─── Exercise 3 ───────────────────────────────────────────────────────────
@@ -69,7 +69,15 @@ function exercise4(csvString) {
 
 function exercise5(arr, keys) {
     const header = keys.join(",")
-    const rows = arr.map(obj => keys.map(col => obj[col]).join(","));
+    const rows =
+        arr
+            .map(
+                obj =>
+                    keys.map(
+                        col =>
+                            obj[col]
+                    ).join(",")
+            );
 
     return [header, ...rows].join("\n")
 
@@ -92,36 +100,47 @@ function exercise6(object, targetKeys) {
             return object[key]
         }
         if (typeof object[key] === "object" && object[key] !== null) {
-            return exercise6(object[key], targetKeys)
+
+            const result = exercise6(object[key], targetKeys);
+
+            if (result !== undefined) {
+                return result
+            }
+
+
         }
     }
 
 }
-//console.log(exercise6({ a: 1, b: { c: 2 } }, "c"))
-//console.log(exercise6({ a: 1, b: { c: 2, d: { e: 3 } } }, "e"))
-//console.log(exercise6({ a: 1, b: 2, c: 3 }, "c"))
+// console.log(exercise6({ a: 1, b: { c: 2 } }, "c"))
+// console.log(exercise6({ a: 1, b: { c: 2, d: { e: 3 } } }, "e"))
+// console.log(exercise6({ a: 1, b: 2, c: 3 }, "c"))
 
 // ─── Exercise 7 ───────────────────────────────────────────────────────────
 // Number to Array of Digits
 // Convert an integer into an array of its individual digits.
 
-function exercise7() {
-    // TODO
+function exercise7(numbers) {
+
+    const converted = String(numbers).split("").map(Number)
+    return converted
+
 }
 
-//exercise7()
+//console.log(exercise7(12345))
 
 // ─── Exercise 8 ───────────────────────────────────────────────────────────
 // Remove Specified Values from Array
 // Return a new array with the given values removed, without mutating the
 // original.
 
-function exercise8() {
-    // TODO
+function exercise8(array1, numToRemove) {
+
+    const result = array1.filter(num => !numToRemove.includes(num))
+    return result
 }
 
-//exercise8()
-
+console.log(exercise8([1, 2, 3, 4, 5], [2, 4]))
 // ─── Exercise 9 ───────────────────────────────────────────────────────────
 // All Combinations from Array of Numbers
 // Return every possible combination (subset) of numbers from a given array.
